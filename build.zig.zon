@@ -1,5 +1,5 @@
 .{
-    .name = "zap",
+    .name = "ziguip",
     .version = "0.0.0",
     .dependencies = .{
         .raylib = .{
