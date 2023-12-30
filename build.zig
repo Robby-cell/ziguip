@@ -11,18 +11,17 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+    exe.addIncludePath(.{ .path = "/usr/include" });
     const strip = b.option(
         bool,
         "strip",
         "Strip debug info to reduce binary size, defaults to false",
     ) orelse false;
     exe.strip = strip;
+    exe.linkLibC();
 
-    const raylib_dep = b.dependency("raylib", .{
-        .target = target,
-        .optimize = optimize,
-    });
-    exe.linkLibrary(raylib_dep.artifact("raylib"));
+    exe.addLibraryPath(.{ .path = "/usr/lib/raylib-5.0" });
+    exe.linkSystemLibrary("raylib");
 
     b.installArtifact(exe);
 
