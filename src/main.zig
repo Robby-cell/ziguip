@@ -40,6 +40,8 @@ pub fn main() !void {
             defer allocator.free(dynamic);
             ray.DrawText(dynamic, 300, 250, 20, ray.WHITE);
 
+            game.render();
+
             ray.DrawFPS(width - 100, 10);
         }
     }
